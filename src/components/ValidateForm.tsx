@@ -13,6 +13,7 @@ import AccountBox from '@mui/icons-material/AccountBox';
 import EmailRounded from '@mui/icons-material/EmailRounded';
 import PasswordRounded from '@mui/icons-material/PasswordRounded';
 import PasswordOutlined from '@mui/icons-material/PasswordOutlined';
+import {useTranslations} from 'next-intl';
 
 const validationSchema = yup.object({
   name: yup
@@ -48,6 +49,8 @@ const validationSchema = yup.object({
 
 export default function ValidateForm() {
 
+  const t = useTranslations('UserRegistrationPage');
+
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -78,7 +81,7 @@ export default function ValidateForm() {
             fullWidth
             id="name"
             name="name"
-            label="Name"
+            label={t('name')}
             value={formik.values.name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -99,7 +102,7 @@ export default function ValidateForm() {
             fullWidth
             id="email"
             name="email"
-            label="Email"
+            label={t('email')}
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -120,7 +123,7 @@ export default function ValidateForm() {
             fullWidth
             id="password"
             name="password"
-            label="Password"
+            label={t('password')}
             value={formik.values.password}
             onChange={formik.handleChange}
             type={showPassword ? "text" : "password"}
@@ -153,7 +156,7 @@ export default function ValidateForm() {
             fullWidth
             id="passwordConfirmation"
             name="passwordConfirmation"
-            label="Password confirmation"
+            label={t('password-confirmation')}
             value={formik.values.passwordConfirmation}
             onChange={formik.handleChange}
             type={showPasswordConfirmation ? "text" : "password"}
@@ -183,7 +186,7 @@ export default function ValidateForm() {
         
         <Box sx={{mt:3}}>
           <Button color="primary" variant="contained" fullWidth type="submit">
-            Submit
+            {t('submit')}
           </Button>
         </Box>
       
