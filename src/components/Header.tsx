@@ -1,3 +1,5 @@
+"use client";
+
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, useTransition } from 'react';
@@ -20,8 +22,8 @@ export default function Header() {
 
   const t = useTranslations('UserRegistrationPage');
 
-  const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const nextLocale = e.target.value;
+  const handleChange = (string: string) => {
+    const nextLocale = string;
     startTransition(() => {
       router.replace(`/${nextLocale}`);
     });
@@ -35,11 +37,11 @@ export default function Header() {
             {t('registration')}
           </Typography>
           
-          <Select 
+          <Select
             className='MuiSelect-iconOutlined'
             defaultValue={localActive}
             disabled={isPending}
-            onChange={onSelectChange}
+            onChange={(e) => handleChange(e.target.value as string)}
             sx={{ backgroundColor:'secondary' }}
           >
             <MenuItem key="en" value="en">

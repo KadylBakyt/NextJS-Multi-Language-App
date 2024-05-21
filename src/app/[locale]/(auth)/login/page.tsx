@@ -1,7 +1,7 @@
 import {NextIntlClientProvider} from 'next-intl';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import Header from '@/components/Header/Header';
+import Header from '@/components/Header';
 import {useTranslations} from 'next-intl';
 
 export default function Login() {
