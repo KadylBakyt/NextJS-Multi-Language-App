@@ -4,8 +4,10 @@ import Link from 'next/link'
 import React from 'react';
 import { Box, Button, Container, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
+import Image from 'next/image';
+import notFoundImg from '../../public/not-found.jpg';
 
-export default function NotFound({ children }: { children: React.ReactNode }) {
+export default function NotFound() {
 
   return (
     <html>
@@ -34,16 +36,15 @@ export default function NotFound({ children }: { children: React.ReactNode }) {
                   
               </Grid>
               <Grid xs={6}>
-                  <img
-                  src="https://cdn.pixabay.com/photo/2017/03/09/12/31/error-2129569__340.jpg"
+                <Image
+                  src={notFoundImg}
                   alt=""
                   width={400} height={200}
-                  />
+                />
               </Grid>
               </Grid>
           </Container>
         </Box>
-        {children}
       </body>
     </html>
   );
