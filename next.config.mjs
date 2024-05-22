@@ -7,8 +7,7 @@ export default (phase, { defaultConfig }) => {
   /**
    * @type {import('next').NextConfig}
    */
-  const nextConfig = {
-    /* config options here */
-  }
-  return withNextIntl(nextConfig);
+  const nextConfig = {}
+  
+  return withNextIntl();
 }
