@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import Alert from '@mui/material/Alert';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from "@mui/icons-material/Visibility";
@@ -13,44 +14,48 @@ import AccountBox from '@mui/icons-material/AccountBox';
 import EmailRounded from '@mui/icons-material/EmailRounded';
 import PasswordRounded from '@mui/icons-material/PasswordRounded';
 import PasswordOutlined from '@mui/icons-material/PasswordOutlined';
+import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 import {useTranslations} from 'next-intl';
-
-const validationSchema = yup.object({
-  name: yup
-    .string()
-    .min(3, 'name must be at least 3 characters')
-    .max(25, 'name must be at most 25 characters')
-    .required('Name is required'),
-  email: yup
-    .string()
-    .email('Enter a valid email')
-    .required('Email is required'),
-  password: yup
-    .string()
-    .min(8, "Your password must be longer than 8 characters.")
-    .max(25)
-    .required('Password is required')
-    .matches(/^(?=.{8,})/, "Must Contain 8 Characters")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])/,
-        "Must Contain One Uppercase, One Lowercase"
-      )
-      .matches(
-        /^(?=.*[!@#\$%\^&\*])/,
-        "Must Contain One Special Case Character"
-      )
-      .matches(/^(?=.{6,20}$)\D*\d/, "Must Contain One Number"),
-  passwordConfirmation: yup
-    .string()
-    .required('Please retype your password.')
-    .oneOf([yup.ref('password')], 'Your passwords do not match.')
-});
-
 
 export default function ValidateForm() {
 
   const t = useTranslations('UserRegistrationPage');
+  const validation = useTranslations('ValidationMessages');
 
+  const validationSchema = yup.object({
+    name: yup
+      .string()
+      .min(3, t('name') + ': ' + validation("must_be_at_least_3_characters"))
+      .max(25, t('name') + ': ' + validation("must_be_at_most_25_characters"))
+      .required(t('name') + ' - ' + validation("is_required")),
+    email: yup
+      .string()
+      .email(validation('valid_email'))
+      .required(t('email') + ' - ' + validation("is_required")),
+    password: yup
+      .string()
+      .min(8, validation("password_must_be_longer_than_8_characters"))
+      .max(25)
+      .required(t('password') + ' - ' + validation("is_required"))
+      .matches(/^(?=.{8,})/, validation("must_contain_8_characters"))
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])/,
+          validation("must_contain_one_uppercase_one_lowercase")
+        )
+        .matches(
+          /^(?=.*[!@#\$%\^&\*])/,
+          validation("must_contain_one_special_case_character")
+        )
+        .matches(/^(?=.{6,20}$)\D*\d/, validation("must_contain_one_number")),
+    passwordConfirmation: yup
+      .string()
+      .required(validation("pls_retype_your_password"))
+      .oneOf([yup.ref('password')], validation("passwords_do_not_match"))
+  });
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertContent, setAlertContent] = useState('');
+  const [formContent, setFormContent] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -68,16 +73,41 @@ export default function ValidateForm() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      setShowAlert(true);
+      setAlertContent(validation("form_submitted_success"));
+      setFormContent(JSON.stringify(values, null, 3));
     },
   });
 
   return (
+    <>
+    { showAlert ?
+        
+        <>
+          <Alert
+              severity="success"
+              variant="filled"
+              sx={{ width: '100%', marginBottom: '10px' }}
+          >
+            {alertContent}
+          </Alert>
+          <Alert
+              severity="info"
+              variant="filled"
+              sx={{ width: '100%', marginBottom: '40px' }}
+          >
+            <pre>{formContent}</pre>
+          </Alert>
+        </>
+      : <></>
+    }
+
     <Grid container direction='column'>
       <form onSubmit={formik.handleSubmit}>
         
         <Box>
           <TextField
+            autoComplete='off'
             fullWidth
             id="name"
             name="name"
@@ -92,13 +122,14 @@ export default function ValidateForm() {
                 <InputAdornment position="start">
                   <AccountBox />
                 </InputAdornment>
-              ),
+              )
             }}
           />
         </Box>
 
         <Box sx={{mt:3}}>
           <TextField
+            autoComplete='off'
             fullWidth
             id="email"
             name="email"
@@ -120,6 +151,7 @@ export default function ValidateForm() {
         
         <Box sx={{mt:3}}>
           <TextField
+            autoComplete='off'
             fullWidth
             id="password"
             name="password"
@@ -153,6 +185,7 @@ export default function ValidateForm() {
 
         <Box sx={{mt:3}}>
           <TextField
+            autoComplete='off'
             fullWidth
             id="passwordConfirmation"
             name="passwordConfirmation"
@@ -185,13 +218,15 @@ export default function ValidateForm() {
         </Box>
         
         <Box sx={{mt:3}}>
-          <Button color="primary" variant="contained" fullWidth type="submit">
+          <Button color="success" variant="contained" fullWidth type="submit">
+            <CheckCircleOutlineOutlinedIcon/> &nbsp;
             {t('submit')}
           </Button>
         </Box>
       
       </form>
     </Grid>
+    </>
   );
 };
 
