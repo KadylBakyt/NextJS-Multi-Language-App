@@ -50,5 +50,22 @@
   "PathnamesPage": {
     "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/pathnames</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is localized accordingly (<code>/de/pfadnamen</code>).</p>",
     "title": "Pathnames"
+  },
+  "Footer": {
+    "copyright-content": "All rights reserved"
+  },
+  "ValidationMessages": {
+      "form_submitted_success": "The form was submitted successfully !",
+      "is_required": "is required!",
+      "pls_retype_your_password": "Please retype your password!",
+      "must_be_at_least_3_characters": "must be at least 3 characters",
+      "must_be_at_most_25_characters": "must be at most 25 characters",
+      "valid_email": "Enter a valid email",
+      "password_must_be_longer_than_8_characters": "Your password must be longer than 8 characters.",
+      "must_contain_8_characters": "Must Contain 8 Characters",
+      "must_contain_one_uppercase_one_lowercase": "Must Contain One Uppercase, One Lowercase",
+      "must_contain_one_special_case_character": "Must Contain One Special Case Character",
+      "must_contain_one_number": "Must Contain One Number",
+      "passwords_do_not_match": "Your passwords do not match"
   }
 }

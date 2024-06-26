@@ -50,5 +50,22 @@
     "PathnamesPage": {
       "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/pathnames</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is localized accordingly (<code>/de/pfadnamen</code>).</p>",
       "title": "Pathnames"
+    },
+    "Footer": {
+      "copyright-content": "版权所有"
+    },
+    "ValidationMessages": {
+      "form_submitted_success": "表单已成功提交！",
+        "is_required": "不能为空!",
+        "pls_retype_your_password": "请重新输入您的密码!",
+        "must_be_at_least_3_characters": "必须至少包含 3 个字符",
+        "must_be_at_most_25_characters": "最多为 25 个字符",
+        "valid_email": "请输入有效的电子邮件",
+        "password_must_be_longer_than_8_characters": "密码必须超过 8 个字符.",
+        "must_contain_8_characters": "必须包含 8 个字符",
+        "must_contain_one_uppercase_one_lowercase": "必须包含一个大写字母、一个小写字母",
+        "must_contain_one_special_case_character": "必须包含一个特殊字符",
+        "must_contain_one_number": "必须包含一个数字",
+        "passwords_do_not_match": "您的密码不匹配"
     }
   }

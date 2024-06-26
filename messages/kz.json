@@ -50,5 +50,22 @@
     "PathnamesPage": {
       "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/pathnames</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is localized accordingly (<code>/de/pfadnamen</code>).</p>",
       "title": "Pathnames"
+    },
+    "Footer": {
+      "copyright-content": "Барлық құқықтар сақталған"
+    },
+    "ValidationMessages": {
+      "form_submitted_success": "Пішін сәтті жіберілді!",
+        "is_required": "бос болуына болмайды!",
+        "pls_retype_your_password": "Құпия сөзіңізді қайта теріңіз!",
+        "must_be_at_least_3_characters": "кемінде 3 таңба болуы керек",
+        "must_be_at_most_25_characters": "25 таңбадан аспауы керек",
+        "valid_email": "Жарамды электрондық поштаны енгізіңіз",
+        "password_must_be_longer_than_8_characters": "Құпия сөзіңіз 8 таңбадан жоғары болуы керек.",
+        "must_contain_8_characters": "8 таңбадан тұруы керек",
+        "must_contain_one_uppercase_one_lowercase": "Бір бас әріп, бір кіші әріп болуы керек",
+        "must_contain_one_special_case_character": "Бір ерекше таңба қамтылуы керек",
+        "must_contain_one_number": "Бір сан болуы керек",
+        "passwords_do_not_match": "Құпия сөздеріңіз сәйкес келмейді"
     }
   }

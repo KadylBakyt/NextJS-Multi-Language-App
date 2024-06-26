@@ -12,18 +12,15 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Icon from '@mui/material/Icon';
 import "flag-icons/css/flag-icons.min.css";
-import {useTranslations} from 'next-intl';
 
-export default function Header() {
+export default function Header( params: {title: string}) {
 
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const localActive = useLocale();
 
-  const t = useTranslations('UserRegistrationPage');
-
-  const handleChange = (string: string) => {
-    const nextLocale = string;
+  const handleChange = (locale: string) => {
+    const nextLocale = locale;
     startTransition(() => {
       router.replace(`/${nextLocale}`);
     });
@@ -34,7 +31,7 @@ export default function Header() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {t('registration')}
+            {params.title}
           </Typography>
           
           <Select
@@ -44,7 +41,7 @@ export default function Header() {
             onChange={(e) => handleChange(e.target.value as string)}
             sx={{ backgroundColor:'secondary' }}
           >
-            <MenuItem key="en" value="en">
+            <MenuItem key="en" value="en" style={{whiteSpace: 'normal'}}>
               <ListItemIcon>
                 <Icon className="fi fi-gb"></Icon>
               </ListItemIcon>

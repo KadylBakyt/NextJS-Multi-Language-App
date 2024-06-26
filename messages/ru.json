@@ -50,5 +50,22 @@
     "PathnamesPage": {
       "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/pathnames</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is localized accordingly (<code>/de/pfadnamen</code>).</p>",
       "title": "Pathnames"
+    },
+    "Footer": {
+      "copyright-content": "Все права защищены"
+    },
+    "ValidationMessages": {
+      "form_submitted_success": "Форма успешно отправлена!",
+        "is_required": "обязательное поле!",
+        "pls_retype_your_password": "Пожалуйста, повторите свой пароль!",
+        "must_be_at_least_3_characters": "должно быть не менее 3 символов",
+        "must_be_at_most_25_characters": "должно быть не более 25 символов",
+        "valid_email": "Введите действительный адрес электронной почты",
+        "password_must_be_longer_than_8_characters": "Ваш пароль должен быть длиннее 8 символов.",
+        "must_contain_8_characters": "Должно содержать 8 символов",
+        "must_contain_one_uppercase_one_lowercase": "Должен содержать одну заглавную и одну строчную буквы.",
+        "must_contain_one_special_case_character": "Должен содержать один спецсимвол",
+        "must_contain_one_number": "Должен содержать одно число",
+        "passwords_do_not_match": "Ваши пароли не совпадают"
     }
   }
